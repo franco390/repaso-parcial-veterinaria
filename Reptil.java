@@ -1,27 +1,24 @@
 package Model;
+import Enum.Especies;
+import Interface.IAnimal;
 
 public final class Reptil extends Animal {
 
-    private String especie;
+    private Especies reptiles;
     private boolean venenoso;
 
-    public Reptil(String nombre, String idVeterinaria, int edad, String especie, boolean venenoso) {
-        super(nombre, idVeterinaria, edad);
-        this.especie = especie;
+    public Reptil(String nombre, int edad, boolean venenoso, Especies reptiles) {
+        super(nombre, edad);
         this.venenoso = venenoso;
+        this.reptiles = reptiles;
     }
 
-    @Override
-    public String toString() {
-        return "Nombre: " + getNombre() + "Edad: " + getEdad() + "Numero de registro: " + getIdVeterinaria() + "Especie: " + especie + "Es venenoso: " + venenoso;
+    public Especies getReptiles() {
+        return reptiles;
     }
 
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
+    public void setReptiles(Especies reptiles) {
+        this.reptiles = reptiles;
     }
 
     public boolean isVenenoso() {
@@ -32,10 +29,21 @@ public final class Reptil extends Animal {
         this.venenoso = venenoso;
     }
 
-    public boolean venenoso(){
+    @Override
+    public String toString() {
+        return super.toString() +
+                "venenoso=" + venenoso +
+                ", tipo de reptil=" + reptiles;
 
-        return venenoso;
     }
 
+    @Override
+    public String alimentarse() {
+        return "El reptil " + getNombre() + "se alimento.";
+    }
 
+    @Override
+    public String revisado() {
+        return "El reptil: " + getNombre() + "fue revisado.";
+    }
 }

@@ -1,45 +1,57 @@
 package Model;
 
+import Interface.IAnimal;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Gato extends Animal{
+public final class Gato extends Animal {
 
-    private List<String> visitasVeterinaria;
-    private Boolean esterelizado;
+    private boolean esterelizado;
+    private List<String> registrosVeterinaria;
 
-    public Gato(String nombre, String idVeterinaria, int edad, String visitasVeterinaria, boolean esterelizado) {
-        super(nombre, idVeterinaria, edad);
-        this.visitasVeterinaria = new ArrayList<>();
+    public Gato(String nombre, int edad, boolean esterelizado) {
+        super(nombre, edad);
         this.esterelizado = esterelizado;
+        this.registrosVeterinaria = new ArrayList<>();
     }
 
-    public List<String> getVisitasVeterinaria() {
-        return visitasVeterinaria;
-    }
-
-    public void setVisitasVeterinaria(List<String> visitasVeterinaria) {
-        this.visitasVeterinaria = visitasVeterinaria;
-    }
-
-    public Boolean getEsterelizado() {
+    public boolean isEsterelizado() {
         return esterelizado;
     }
 
-    public void setEsterelizado(Boolean esterelizado) {
+    public void setEsterelizado(boolean esterelizado) {
         this.esterelizado = esterelizado;
+    }
+
+    public List<String> getRegistrosVeterinaria() {
+        return registrosVeterinaria;
+    }
+
+    public void setRegistrosVeterinaria(List<String> registrosVeterinaria) {
+        this.registrosVeterinaria = registrosVeterinaria;
+    }
+
+    public void cargarVisita(String visita){
+
+        this.registrosVeterinaria.add(visita);
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + getNombre() + "Edad" + getEdad() + "NUmero veterinaria: " + getIdVeterinaria() + "Visatas al gato: " + visitasVeterinaria + "Esterilzado: " + esterelizado;
+        return super.toString() +
+                "esterelizado=" + esterelizado +
+                "registrosVeterinaria=" + registrosVeterinaria;
+
     }
 
-    public boolean esterilizar(){
+    @Override
+    public String alimentarse() {
+        return "El gato: " + getNombre() + "se alimento.";
+    }
 
-        if(esterelizado){
-            return true;
-        }
-        else return false;
+    @Override
+    public String revisado() {
+        return "El gato: " + getNombre() + "fue revisado.";
     }
 }

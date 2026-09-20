@@ -1,30 +1,18 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public final class Perro extends  Animal {
+public final class Perro extends Animal  {
 
-    private List<String> listaVisitas;
     private boolean vacunado;
+    private List<String> registroVeterinaria;
 
-    public Perro(String nombre, String idVeterinaria, int edad, String listaVisitas, boolean vacunado) {
-        super(nombre, idVeterinaria, edad);
-        this.listaVisitas = new ArrayList<>();
+    public Perro(String nombre, int edad, boolean vacunado) {
+        super(nombre, edad);
         this.vacunado = vacunado;
-    }
-
-    @Override
-    public String toString() {
-        return "Nombre: " + getNombre() + "Edad: " + getEdad() + "Numero de registro: " + getIdVeterinaria() + "Lista de visitas: " + listaVisitas + "Vacuna perro: " + vacunado;
-    }
-
-    public List<String> getListaVisitas() {
-        return listaVisitas;
-    }
-
-    public void setListaVisitas(List<String> listaVisitas) {
-        this.listaVisitas = listaVisitas;
+        this.registroVeterinaria = new ArrayList<>();
     }
 
     public boolean isVacunado() {
@@ -35,8 +23,33 @@ public final class Perro extends  Animal {
         this.vacunado = vacunado;
     }
 
-    public boolean vacunado(){
+    public List<String> getRegistroVeterinaria() {
+        return registroVeterinaria;
+    }
 
-        return vacunado;
+    public void setRegistroVeterinaria(List<String> registroVeterinaria) {
+        this.registroVeterinaria = registroVeterinaria;
+    }
+
+    public void cargarVisita(String visita){
+
+        this.registroVeterinaria.add(visita);
+    }
+
+    @Override
+    public String toString() {
+        return
+                "registroVeterinaria=" + registroVeterinaria +
+                ", vacunado=" + vacunado + super.toString();
+    }
+
+    @Override
+    public String alimentarse() {
+        return "El perro: " + getNombre() + "se alimento.";
+    }
+
+    @Override
+    public String revisado() {
+        return "El perro: " + getNombre() + "fue revisado.";
     }
 }
